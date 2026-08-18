@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+.venv/
+.env
+data/raw/*.csv
+data/processed/*
+!data/processed/.gitkeep
+models/*.joblib
+outputs/figures/*.png
+outputs/metrics/*
+!outputs/metrics/.gitkeep
+
