@@ -94,6 +94,26 @@ python main.py --mode predict --text "Nvidia smashed earnings expectations"
 python main.py --mode market-analysis --data data/raw/dataset.csv --ticker NVDA
 ```
 
+## Interactive Dashboard
+
+Run the local Streamlit dashboard with:
+
+```bash
+streamlit run app.py
+```
+
+The dashboard requires no CSV upload. Enter a ticker (for example `NVDA`) and
+select a price-history range. It retrieves current/recent market data and recent
+financial-news headlines through yfinance, classifies available headlines with the
+saved Logistic Regression + TF-IDF model, aggregates headline sentiment, displays a
+price chart, and produces an **experimental behavioural signal**. Internet access is
+required for live market/news retrieval.
+
+Historical CSV data remains exclusively for model training and evaluation. The live
+dashboard calls its source **Recent Financial News Sentiment**; it does not claim to
+analyse live X/Twitter posts. If generated model files are unavailable after a fresh
+deployment, the dashboard clearly reports that headline classification cannot run.
+
 ## NLP methodology and evaluation
 
 Cleaning removes URLs, mentions, RT markers, HTML artifacts, and hashtag symbols while retaining words such as *bullish*, *earnings*, *buy*, and *crash*. An approximately 80/20 stratified split uses `random_state=42`; TF-IDF uses word unigrams/bigrams and is fitted after splitting. The project evaluates Naive Bayes, Logistic Regression, and optionally FinBERT with accuracy, macro/weighted F1, macro precision/recall, reports, and confusion matrices. Results are written only after you run an experiment: **Run the experiment to populate this result.**
